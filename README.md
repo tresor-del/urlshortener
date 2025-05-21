@@ -12,7 +12,7 @@ A personal project to shorten URLs.
 ## Installation
 
 ```bash
-git clone https://github.com/your-username/urlshortener.git
+git clone https://github.com/tresor-del/urlshortener.git
 cd urlshortener
 # Install dependencies according to your stack (e.g., npm install, pip install -r requirements.txt)
 ```
@@ -21,21 +21,21 @@ cd urlshortener
 
 ### Without Docker
 
-1. Access the backend folder and run the backend app
+1. Access the backend folder and run the backend app:
 
 ```bash
 cd frontend
 ```
 ```bash
-    npm start
+npm start
 ```
-2. Now go to the frontend
+2. Now go to the frontend and start the app: 
 
 ```bash
 cd frontend
 ```
 ```bash
-    npm start
+npm start
 ```
 3.And  access the application at `http://localhost:PORT`
 
