@@ -24,10 +24,10 @@ cd urlshortener
 1. Access the backend folder and run the backend app:
 
 ```bash
-cd frontend
+cd backend
 ```
 ```bash
-npm start
+npm python manage.py runserver
 ```
 2. Now go to the frontend and start the app: 
 
