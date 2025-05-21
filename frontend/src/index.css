@@ -1,0 +1,507 @@
+/* General */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: 'Poppins',sans-serif;
+    color: #343a40;
+}
+
+body{
+    width: 800px;
+    margin: 0 auto;
+}
+
+a{
+    color: #1c7ed6;
+    cursor: pointer;
+}
+
+ul{
+    list-style: none;
+}
+
+/* Authentication container */
+.form-container, .form-container form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container{
+    gap: 4rem;
+    height:100vh;
+    justify-content: center;
+}
+
+.form-container form{
+    gap: 1rem;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #868e96;
+    outline: none;
+}
+
+input:focus{
+    border: 2px solid #1c7ed6;
+}
+
+.form-container form button{
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #339af0;
+}
+
+
+
+.alert-danger{
+    background-color: #ffa8a8;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid red;
+    color: #343a40;
+}
+
+.alert-info{
+    margin-top: 20px;
+    background-color: #d0ebff;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    color: #343a40;
+}
+
+.disabled{
+    border-color: #a5d8ff !important;
+    background-color: #a5d8ff !important;
+}
+
+/* Navbar */
+
+.navbar{
+    padding: 1rem 0 ;
+}
+
+.navbar ul{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar .logo{
+    margin-right: auto;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+
+.link{
+    color: inherit;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+.link:hover{
+    color: blue;
+}
+
+.active{
+    color:#007bff;
+}
+
+/* Shortener */
+.shortener {
+    height: calc(100vh - 122px);
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    gap: 2rem;
+}
+
+.shortener input {
+    padding: 12px, 16px;
+    height: 60px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    transition: all 0.3s ease-in-out
+
+}
+
+.shortener input:focus{
+    border-color: #007bff;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+.shortener button {
+    padding: 14px 20px;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.shortener button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+.shortener button:hover{
+    background-color: #0056b3;
+}
+
+.shortener h1 {
+    font-size: 50px;
+    line-height: 1.2; /* Meilleur espacement */
+    letter-spacing: -1px; /* Réduction de l'espacement négatif */
+    font-weight: 700; /* Texte plus visible */
+    text-align: start;
+    color: #333; /* Une couleur moderne et sobre */
+}
+
+
+.shortener .highlight {
+    color: #007bff; /* Une couleur dynamique (bleu moderne) */
+    font-weight: 800; /* Mettre en valeur l'élément important */
+    text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.3); /* Léger effet de profondeur */
+}
+
+
+.shortened-url {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.shortened-url ul{
+    display: flex;
+    justify-content: end;
+    padding: 5px;
+    gap: 1rem;
+}
+
+.shortened-url ul li{
+    cursor: pointer;
+}
+
+
+.shortened-url .div {
+    background-color: white;
+    padding: 1rem 2rem;
+}
+.shortened-url .modal-content{
+    background-color: white;
+}
+
+.shortened-url div .btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.shortened-url button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.shortened-url button:hover {
+    background-color: #ddd;
+}
+
+
+.profile-container {
+    position: relative; /* Permet de positionner le menu correctement */
+}
+
+
+
+.profile-container div{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 0.1rem;
+}
+
+.profile {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 180px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    
+    /* Caché par défaut */
+    opacity: 0;
+    visibility: hidden;
+}
+
+.profile ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 0;
+}
+
+.profile ul li {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+
+}
+.profile ul li:first-child:hover{
+  background-color: transparent;
+}
+
+
+.profile ul li:last-child{
+  border: 1px solid black;
+  border-bottom: none !important;
+}
+
+.profile .photo{
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c7ed6;
+}
+
+.profile .username{
+  opacity: 0.5;
+}
+
+.profile ul li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Afficher le menu lorsqu'il est ouvert */
+.profile.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.icon {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .rotate {
+    transform: rotate(180deg);
+  }
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .ab .b {
+    width: 100%;
+    border-top: 1px solid black;
+  }
+
+  .text-container {
+    padding: 0 10px;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.save{
+    display: flex;
+    text-align: center;
+    justify-content: center !important;
+    margin-top: 1rem;
+}
+
+.short-url{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+  .container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Barre de recherche et filtres */
+  .search-bar,
+  .sort-dropdown {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .search-bar:focus,
+  .sort-dropdown:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Liste des URLs */
+  .url-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .url-item {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #d1cbcb;
+    transition: 0.3s;
+  }
+  
+  .url-item:hover {
+    background: #f1f1f1;
+  }
+  
+  /* Ligne principale */
+  .url-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .short-url {
+    color: #007bff;
+    cursor: pointer;
+  }
+  .short-url-container{
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .short-url-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  /* Bouton toggle */
+  .toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+  }
+  
+  .toggle-btn:hover {
+    color: #007bff;
+  }
+  
+  /* Détails */
+  .url-details {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .url-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  
+  .url-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.3s;
+  }
+  
+  .url-actions button:hover {
+    color: #ff4757;
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .pagination button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .pagination button:hover {
+    background: #0056b3;
+  }
+  
+  .pagination .active {
+    background: #ff4757;
+  }
+
+  .filter-dropdown{
+    margin-bottom: 10px;
+    padding: 10px;
+  }
