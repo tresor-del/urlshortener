@@ -1,12 +1,12 @@
 # Étape de build
-FROM node:18 AS build
+FROM node:18 AS builder
 
 # Définir le répertoire de travail
 WORKDIR /app
 
 # Installer les dépendances
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm ci --production
 
 # Copier le reste du code et construire l'application
 COPY . .
@@ -16,7 +16,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copier les fichiers construits vers le dossier de Nginx
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Exposer le port 80
