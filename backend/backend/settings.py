@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-^09^$hv-^k4be+_)c3*0+3&n&wq92=!5q64ozymc+4!9+f8ma*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -122,6 +122,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Allow Vite frontend
     "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000", 
+    "http://0.0.0.0:3000",
+    "http://frontend:3000"
 ]
 
 # Allow credentials (cookies, authentication)
@@ -134,4 +138,6 @@ REST_FRAMEWORK ={
 }
 
 AUTH_USER_MODEL = 'authentication.CustomUser'
+
+
 
