@@ -3,7 +3,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    image: urlshortener-backend
+    # image: urlshortener-backend
     command: gunicorn backend.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./backend:/app
@@ -21,7 +21,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    image: urlshortener_frontend
+    # image: urlshortener_frontend
     volumes:
       - ./frontend:/app
       - /app/node_modules
