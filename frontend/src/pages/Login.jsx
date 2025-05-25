@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { login } from "../api/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
-import Logo  from '../components/Logo'
+// import { jwtDecode } from "jwt-decode";
+import Logo  from '../components/Logo';
+import decodeToken from '../utils/DecodeToken'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -24,21 +25,23 @@ const Login = () => {
  
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();  
     setLoading(true)
     setDisabled(true)
-    const decodeToken = (token) => {
-      try {
-          return jwtDecode(token)
-      } catch (error) {
-          console.error('Error decoding token:', error);
-          return null;
-      }
-    };
+
+    // const decodeToken = (token) => {
+    //   try {
+    //       return jwtDecode(token)
+    //   } catch (error) {
+    //       console.error('Error decoding token:', error);
+    //       return null;
+    //   }
+    // };
 
     try {
       const data = await login({ username: email, email, password });
-      console.log(data.access)
+      // console.log(data.access)
       const userInfo = {
         username: email,
         id: decodeToken(data.access).user_id
@@ -50,7 +53,7 @@ const Login = () => {
 
     } catch (error) {
       console.error('Login error', error);
-      setError('An error occured. Please check yours credentials');
+      setError(error.response?.data?.detail || 'An error occured.');
       setLoading(false)
       setDisabled(false)
     }
