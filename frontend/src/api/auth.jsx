@@ -7,8 +7,17 @@ export const register = async (userData) => {
         const response = await axios.post(`${API_URL}register/`, userData);
         return response.data;
     } catch (error) {
-        console.error('Register Error', error);
-        throw error;
+      if (error.response){
+        console.error('Server error', error.response.data);
+        throw new Error(error.response.data.detail || 'Unrecognize Error');
+      } else if (error.request){
+        console.error('Server don\'t response');
+        throw new Error('Server don\'t response');
+      } else{
+        console.error('Axios Error', error.message);
+        throw new Error('Request error')
+      }
+        
     }
 }
 
@@ -29,9 +38,9 @@ export const fetchUser = async (token) => {
         'Authorization': `Bearer ${token}`,
       },
     });
-    return response.data;  // Return user data
+    return response.data; 
   } catch (error) {
     console.error('Fetch Error', error);
-    throw error;  // Rethrow the error to be handled later
+    throw error; 
   }
 };
