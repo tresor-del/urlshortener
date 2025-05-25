@@ -16,8 +16,14 @@ export const AuthProvider = ({ children }) => {
 
 
   const setLogin = (newToken, userInfo) => {
+
+    if (!newToken || !userInfo){
+      console.error('SetLogin error: missing token or userInfo')
+    }
+
     setToken(newToken);
     localStorage.setItem('token', newToken)
+
     setUser(userInfo);
     localStorage.setItem("user", JSON.stringify(userInfo));
   };
