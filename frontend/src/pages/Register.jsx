@@ -4,6 +4,7 @@ import { register } from "../api/auth";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
+import decodeToken  from "../utils/DecodeToken";
 
 
 
@@ -19,20 +20,30 @@ const Register = () => {
     const [ disabled, setDisabled ] = useState(false)
 
     const handleSubmit = async (e) => {
+
       setLoading(true)
       setDisabled(true)
+
         e.preventDefault()
+
         setError('');
+
         try {
+
             const data = await register({email, password});
-            console.log(data)
-            setLogin(data.token.access)
+            // console.log(data)
+
+            const userInfo = decodeToken(data.token.access)
+            const token = data.token.access 
+
+            setLogin(token, userInfo)
+
             navigate('/')
             setLoading(false)
             setDisabled(false)
         } catch (error) {
             console.error('Register error', error)
-            setError('An error accurate while signing up')
+            setError(error.response?.data?.detail || 'An error accurate ')
             setLoading(false)
             setDisabled(false)
         }
