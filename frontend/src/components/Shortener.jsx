@@ -35,9 +35,11 @@ const Shortener = () => {
         author: user.id,
       })
     );
+    
     const storedUser = localStorage.getItem('user')
     const userObj = JSON.parse(storedUser)
     console.log(userObj.id)
+
     try {
       const response = await fetch("http://127.0.0.1:8000/shorten/", {
         method: "POST",

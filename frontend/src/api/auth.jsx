@@ -5,7 +5,9 @@ const API_URL = 'http://127.0.0.1:8000/api/' ;
 export const register = async (userData) => {
     try {
         const response = await axios.post(`${API_URL}register/`, userData);
+        console.log(response.data)
         return response.data;
+        
     } catch (error) {
       if (error.response){
         console.error('Server error', error.response.data);

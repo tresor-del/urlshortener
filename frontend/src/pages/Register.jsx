@@ -30,11 +30,13 @@ const Register = () => {
 
         try {
 
-            const data = await register({email, password});
+            const data = await register({username: email, email,  password});
             // console.log(data)
 
-            const userInfo = decodeToken(data.token.access)
+            const userInfo = data.user.id
+            console.log(userInfo)
             const token = data.token.access 
+            console.log(token)
 
             setLogin(token, userInfo)
 

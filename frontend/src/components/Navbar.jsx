@@ -5,8 +5,19 @@ import logo from "../logo/LogoSample_ByTailorBrands.jpg";
 
 
 const Navbar = () => {
+
   const storedUser = localStorage.getItem("user");
-  const user = storedUser ? JSON.parse(storedUser) : null;
+  let user = null;
+
+  if (storedUser && storedUser !== "undefined") {
+    try {
+      user = JSON.parse(storedUser);
+    } catch (error) {
+      console.error("Failed to parse storedUser:", error);
+      user = null;
+    }
+  }
+
   const { logout } = useAuth();
   const [open, setOpen] = useState(false);
   const profileRef = useRef(null); // Référence pour le menu profil

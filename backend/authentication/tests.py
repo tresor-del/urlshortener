@@ -1,3 +1,7 @@
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
+
+
 from rest_framework.test import APITestCase
 from django.urls import reverse
 from .models import CustomUser
