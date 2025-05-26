@@ -5,18 +5,19 @@ import logo from "../logo/LogoSample_ByTailorBrands.jpg";
 
 
 const Navbar = () => {
-
+  
   const storedUser = localStorage.getItem("user");
   let user = null;
 
-  if (storedUser && storedUser !== "undefined") {
-    try {
+  try {
+    if (storedUser && storedUser !== "undefined") {
       user = JSON.parse(storedUser);
-    } catch (error) {
-      console.error("Failed to parse storedUser:", error);
-      user = null;
     }
+  } catch (error) {
+    console.error("Invalid JSON in localStorage 'user':", error);
+    localStorage.removeItem("user"); // nettoyage en cas de donnée invalide
   }
+
 
   const { logout } = useAuth();
   const [open, setOpen] = useState(false);

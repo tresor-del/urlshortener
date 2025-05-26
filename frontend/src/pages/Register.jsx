@@ -30,11 +30,19 @@ const Register = () => {
 
         try {
 
-            const data = await register({username: email, email,  password});
-            // console.log(data)
+            const data = await register({ username: email, password });
 
-            const userInfo = data.user.id
+            alert('login')
+            // console.log(data)
+            const data_rep = data
+            console.log(data_rep)
+
+            const userInfo = {
+              username: email,
+              id: decodeToken(data.access).user_id
+            }
             console.log(userInfo)
+
             const token = data.token.access 
             console.log(token)
 
@@ -45,7 +53,7 @@ const Register = () => {
             setDisabled(false)
         } catch (error) {
             console.error('Register error', error)
-            setError(error.response?.data?.detail || 'An error accurate ')
+            setError(error.message || 'An error occured ');
             setLoading(false)
             setDisabled(false)
         }
