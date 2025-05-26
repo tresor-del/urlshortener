@@ -18,17 +18,24 @@ class RegisterSerializer(serializers.HyperlinkedModelSerializer):
         extra_kwargs = {'password': {'write_only': True}}
     
     
-    def validated_email(self, value):
-        """ Check that every user have his own email """
-        if CustomUser.objects.filter(email=value).exists():
-            raise serializers.ValidationError('Un utilisateur avec cet Email existe déjà')
-        return value
+    def validate(self, data):
+        """ 
+        Check that every user have his own email 
+        """
+        # email = data.get('email')
+        # password = data.get('password')
+
+        # if email in password:
+        #     raise serializers.ValidationError({'password': 'Password must not contain username'})
+        
+        if CustomUser.objects.filter(email=data['email']).exists():
+            raise serializers.ValidationError({'email': 'Un utilisateur avec cet Email existe déjà'})
+        return data
     
     def create(self, validated_data):
-        user = CustomUser.objects.create_user(
-            email = validated_data['email'],
-            username= validated_data['email']
-        )
-        user.set_password(validated_data['password'])
+        email = validated_data['email']
+        password = validated_data['password']
+        user = CustomUser.objects.create_user(username=email, email=email)
+        user.set_password(password)
         user.save()
         return user

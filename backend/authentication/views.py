@@ -19,7 +19,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 class UserListView(CreateUserMixin, generics.ListCreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class =RegisterSerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.AllowAny]
       
 class RegisterView(CreateUserMixin, generics.CreateAPIView):
     serializer_class = RegisterSerializer
