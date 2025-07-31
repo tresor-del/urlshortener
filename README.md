@@ -3,18 +3,14 @@
 A personal project to shorten URLs.  
 **Note:** This project is still under development, so there may be bugs or incomplete features.
 
-## Features
-
-- URL shortening
-- Redirect to the original URL
-- Usage statistics (optional)
+<img src="assets/image.png" alt="Photo de Victoire" />
 
 ## Installation
 
 ```bash
-git clone https://github.com/tresor-del/urlshortener.git
-cd urlshortener
-# Install dependencies according to your stack (e.g., npm install, pip install -r requirements.txt)
+git clone git@github.com:tresor-del/urlshortener.git
+cd urlshortene
+
 ```
 
 ## Usage
@@ -25,9 +21,13 @@ cd urlshortener
 
 ```bash
 cd backend
+python manage.py runserver
 ```
 ```bash
-npm python manage.py runserver
+pip install -r requirements.txt
+```
+```bash
+python manage.py runserver
 ```
 2. Now go to the frontend and start the app: 
 
@@ -35,9 +35,12 @@ npm python manage.py runserver
 cd frontend
 ```
 ```bash
-npm start
+npm install --save-dev vite
 ```
-3.And  access the application at `http://localhost:PORT`
+```bash
+npm run dev
+```
+3.And  access the application at `http://localhost:5173/`
 
 ### With Docker
 
@@ -53,6 +56,3 @@ docker compose up
 
 Contributions are welcome! Open an issue or a pull request.
 
-## License
-
-This project is licensed under the MIT License.
