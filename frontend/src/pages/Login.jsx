@@ -83,7 +83,7 @@ const Login = () => {
       <button type="submit" >{loading ? 'Signing in...' : 'Sign In'}</button>
     }
       
-      <p>Don't have an account? <Link to='/register'>Register here</Link></p>
+      <p>Do not have an account? <Link to='/register'>Register here</Link></p>
     </form>
     </div>
     

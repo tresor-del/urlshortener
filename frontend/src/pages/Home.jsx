@@ -1,4 +1,4 @@
-import Shortener from "../components/Shortener";
+// import Shortener from "../components/Shortener";
 import Navbar from "../components/Navbar";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div>
         
-        {user? <Navbar /> :<p className="alert-info">  <Link to='/login'>Login</Link> or <Link to='/register'>Register</Link> for more personnalisation</p> }
+        {user? <Navbar /> :<p className="alert-info">You must <Link to='/login'>Login</Link> or <Link to='/register'>Register</Link> for better experience</p> }
       <Outlet />
     </div>
       
