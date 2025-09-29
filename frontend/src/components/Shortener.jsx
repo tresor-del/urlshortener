@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import  { useState } from "react";
+// import { useAuth } from "../context/AuthContext";
+// import { useNavigate } from "react-router-dom";
 import logo from "../logo/LogoSample_ByTailorBrands.jpg";
 
 
 const Shortener = () => {
   const [longUrl, setLongUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
-  const [UrlTitle, setUrlTitle] = useState('');// Allows sending cookies
+  const [UrlTitle, setUrlTitle] = useState('');
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [shortUrlId, setShortUrlId] = useState("");
-  const { logout } = useAuth();
+  // const { logout } = useAuth();
   const token = localStorage.getItem('token')
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   console.log(user)
 
@@ -68,10 +68,10 @@ const Shortener = () => {
     }
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+  // const handleLogout = () => {
+  //   logout();
+  //   navigate("/login");
+  // };
 
   const closeModal = () => {
     setShowModal(false);
@@ -87,39 +87,39 @@ const Shortener = () => {
     window.open(shortUrl, "_blank");
   };
 
-  const deleteUrl = async (urlId) => {
-    const csrfToken = getCSRFToken();
-    try {
-      const response = await fetch(
-        `http://127.0.0.1:8000/shorten/${urlId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
-            "X-CSRFToken": csrfToken, 
-          },
-          credentials: "include",
-        }
-      );
+  // const deleteUrl = async (urlId) => {
+  //   const csrfToken = getCSRFToken();
+  //   try {
+  //     const response = await fetch(
+  //       `http://127.0.0.1:8000/shorten/${urlId}`,
+  //       {
+  //         method: "DELETE",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           "Authorization": `Bearer ${token}`,
+  //           "X-CSRFToken": csrfToken, 
+  //         },
+  //         credentials: "include",
+  //       }
+  //     );
 
-      if (!response.ok) {
-        throw new Error("Failed to delete URL");
-      }
+  //     if (!response.ok) {
+  //       throw new Error("Failed to delete URL");
+  //     }
 
-      navigate('/')
+  //     navigate('/')
 
-    } catch (error) {
-      console.error("Error Fetching data:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  //   } catch (error) {
+  //     console.error("Error Fetching data:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-  function handleDelete() {
-    const urlId = shortUrlId;
-    deleteUrl(urlId);
-  }
+  // function handleDelete() {
+  //   const urlId = shortUrlId;
+  //   deleteUrl(urlId);
+  // }
 
   return (
     <div className="shortener">
@@ -132,7 +132,7 @@ const Shortener = () => {
       </div>
       <div className="s">
         <input
-          type="email"
+          type="url"
           id="email"
           value={longUrl}
           onChange={(e) => setLongUrl(e.target.value)}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { MdDelete, MdFavoriteBorder, MdFavorite, MdExpandMore, MdExpandLess } from "react-icons/md";
 
 const Urls = () => {
@@ -9,7 +9,7 @@ const Urls = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const urlsPerPage = 10;
   const [selectedFilter, setSelectedFilter] = useState("all");
-  const user = JSON.stringify(localStorage.getItem('user'))
+  // const user = JSON.stringify(localStorage.getItem('user'))
 
   const token = localStorage.getItem("token");
 
@@ -19,6 +19,7 @@ const Urls = () => {
       .find((row) => row.startsWith("csrftoken="))
       ?.split("=")[1] || "";
   };
+
   useEffect(() => {
     const fetchUrls = async () => {
       const csrfToken = getCSRFToken();
@@ -54,7 +55,7 @@ const Urls = () => {
     };
   
     fetchUrls();
-  }, []);
+  },);
   
 
   //  Fonction pour classer les URLs par catégories temporelles
