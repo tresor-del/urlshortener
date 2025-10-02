@@ -7,7 +7,7 @@ from app.core.config import settings
 
 def generate_unique_id(route: APIRoute) -> str:
     pass
-    # return f"{route.tags[0]}-{route.name}"
+    # return f"{route.tags[0]}-{route.name}" # Problème à corriger ici
 
 app = FastAPI(
         title="URLShortener app",
